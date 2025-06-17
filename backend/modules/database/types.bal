@@ -23,3 +23,29 @@ type DatabaseClientConfig record {|
     # Additional configurations related to the MySQL database connection
     mysql:Options? options;
 |};
+
+# [Database]User insert type.
+type UserInsert record {|
+    # User's first name
+    String firstName;
+    # User's last name
+    String lastName;
+    # User's mobile_number
+    String mobileNumber;
+    # User's email
+    String email;
+|}
+
+# [Database]User type.
+type User record {|
+    # Unique ID of the user
+    int id;
+    # User's first name
+    String firstName;
+    # User's last name
+    String lastName;
+    # User's mobile_number
+    String mobileNumber;
+    # User's email
+    String email;
+|}
