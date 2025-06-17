@@ -8,12 +8,23 @@ isolated function insertUser(UserInsert newUser) returns sql:ParameterizedQuery 
     sql:ParameterizedQuery query =
 
     `INSERT INTO users (first_name, last_name, mobile_number, email) 
-        VALUES (
-            ${newUser.firstName}, 
-            ${newUser.lastName}, 
-            ${newUser.mobileNumber}, 
-            ${newUser.email})`
+     VALUES (
+        ${newUser.firstName}, 
+        ${newUser.lastName}, 
+        ${newUser.mobileNumber}, 
+        ${newUser.email})`
     ;
+
+    return query;
+}
+
+# Build query to retrieve all users from the database
+#
+# + return - sql:ParameterizedQuery - SQL query to select all users
+isolated function getAllUsers() returns sql:ParameterizedQuery {
+    sql:ParameterizedQuery query = 
+    
+    `SELECT * FROM users`;
 
     return query;
 }
