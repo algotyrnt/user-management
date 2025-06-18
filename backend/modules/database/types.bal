@@ -1,5 +1,4 @@
 import ballerina/sql;
-import ballerinax/mysql;
 
 # [Configurable] database configs.
 type DatabaseConfig record {|
@@ -13,24 +12,18 @@ type DatabaseConfig record {|
     string host;
     # Database port
     int port;
-    # Database connection pool
-    sql:ConnectionPool connectionPool;
-|};
-
-# Database config record.
-type DatabaseClientConfig record {|
-    *DatabaseConfig;
-    # Additional configurations related to the MySQL database connection
-    mysql:Options? options;
 |};
 
 # [Database]New User type.
 public type NewUser record {|
     # User's first name
+    @sql:Column {name: "first_name"}
     string firstName;
     # User's last name
+    @sql:Column {name: "last_name"}
     string lastName;
     # User's mobile_number
+    @sql:Column {name: "mobile_number"}
     string mobileNumber;
     # User's email
     string email;
@@ -41,10 +34,13 @@ public type User record {|
     # Unique ID of the user
     int id;
     # User's first name
+    @sql:Column {name: "first_name"}
     string firstName;
     # User's last name
+    @sql:Column {name: "last_name"}
     string lastName;
     # User's mobile_number
+    @sql:Column {name: "mobile_number"}
     string mobileNumber;
     # User's email
     string email;
