@@ -5,9 +5,9 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:55:28 +0530
+date: Wed, 18 Jun 2025 17:57:08 +0530
 content-encoding: gzip
-content-length: 121
+content-length: 119
 ###
 # Get all the users
 GET http://localhost:9090/user-management/users
@@ -16,20 +16,20 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:55:31 +0530
+date: Wed, 18 Jun 2025 17:57:11 +0530
 content-encoding: gzip
-content-length: 143
+content-length: 140
 ###
 # Search user by name
-GET http://localhost:9090/user-management/users/search?name=test
+GET http://localhost:9090/user-management/users/search?name=user1
 
 HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:55:14 +0530
+date: Wed, 18 Jun 2025 17:57:26 +0530
 content-encoding: gzip
-content-length: 117
+content-length: 121
 ###
 # Creat a user
 POST http://localhost:9090/user-management/users
@@ -46,7 +46,7 @@ HTTP/1.1 201  - Created
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 15:13:02 +0530
+date: Wed, 18 Jun 2025 17:57:31 +0530
 content-encoding: gzip
 content-length: 27
 ###
@@ -55,7 +55,7 @@ PUT http://localhost:9090/user-management/users
 content-type: application/json
 
 {
-	"id": 1,
+	"id": 3,
     "firstName": "User",
 	"lastName": "Edited",
 	"mobileNumber": "0771111111",
@@ -66,14 +66,14 @@ HTTP/1.1 200  - OK
 content-type: text/plain
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 16:50:44 +0530
+date: Wed, 18 Jun 2025 18:00:04 +0530
 content-encoding: gzip
 content-length: 46
 ###
 # Delete user by Id
-DELETE http://localhost:9090/user-management/users/2
+DELETE http://localhost:9090/user-management/users/3
 
 HTTP/1.1 204  - No Content
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:03:08 +0530
+date: Wed, 18 Jun 2025 18:00:39 +0530
