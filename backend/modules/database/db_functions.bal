@@ -42,3 +42,17 @@ public isolated function searchUserByName(string nameInput) returns User[]|error
 
     return users;
 }
+
+# Update user details
+# 
+# + user - user with updated details
+# + return - Number of affected rows in the database|Error
+public isolated function updateUser(User user) returns int|error {
+    sql:ExecutionResult|error executionResult = databaseClient->execute(updateUserQuerry(user));
+
+    if executionResult is error{
+        return executionResult;
+    }
+
+    return executionResult.affectedRowCount;
+}
