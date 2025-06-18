@@ -1,0 +1,34 @@
+# Get user by Id
+GET http://localhost:9090/user-managment/users/1
+###
+# Get all the users
+GET http://localhost:9090/user-managment/users
+###
+# Search user by name
+GET http://localhost:9090/user-managment/users/search?name=sample"
+###
+# Creat a user
+POST http://localhost:9090/user-managment/users
+content-type: application/json
+
+{
+    "firstName": "User",
+	"lastName": "One",
+	"mobileNumber": "0771111111",
+	"email": "user-one@tyrnt.co"
+}
+###
+# Update a user
+POST http://localhost:9090/user-managment/users
+content-type: application/json
+
+{
+	"id": 1,
+    "firstName": "User",
+	"lastName": "Edited",
+	"mobileNumber": "0771111111",
+	"email": "user-one-edited@tyrnt.co"
+}
+###
+# Delete user by Id
+GET http://localhost:9090/user-managment/users/2
