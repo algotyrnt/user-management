@@ -8,9 +8,6 @@ configurable DatabaseConfig databaseConfig = ?;
 DatabaseClientConfig databaseClientConfig = {
     ...databaseConfig,
     options: {
-        ssl: {
-            mode: mysql:SSL_REQUIRED
-        },
         connectTimeout: 10
     }
 };
