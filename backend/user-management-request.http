@@ -1,5 +1,5 @@
 # Get user by Id
-GET http://localhost:9090/user-managment/users/1
+GET http://localhost:9090/user-management/users/1
 
 HTTP/1.1 200  - OK
 content-type: application/json
@@ -10,18 +10,18 @@ content-encoding: gzip
 content-length: 119
 ###
 # Get all the users
-GET http://localhost:9090/user-managment/users
+GET http://localhost:9090/user-management/users
 
-HTTP/1.1 405  - Method Not Allowed
+HTTP/1.1 404  - Not Found
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 14:06:41 +0530
+date: Wed, 18 Jun 2025 15:11:34 +0530
 content-encoding: gzip
-content-length: 157
+content-length: 170
 ###
 # Search user by name
-GET http://localhost:9090/user-managment/users/search?name=sample"
+GET http://localhost:9090/user-management/users/search?name=sample"
 
 HTTP/1.1 400  - Bad Request
 content-type: application/json
@@ -32,7 +32,7 @@ content-encoding: gzip
 content-length: 193
 ###
 # Creat a user
-POST http://localhost:9090/user-managment/users
+POST http://localhost:9090/user-management/users
 content-type: application/json
 
 {
@@ -51,7 +51,7 @@ content-encoding: gzip
 content-length: 158
 ###
 # Update a user
-POST http://localhost:9090/user-managment/users
+POST http://localhost:9090/user-management/users
 content-type: application/json
 
 {
@@ -71,7 +71,7 @@ content-encoding: gzip
 content-length: 159
 ###
 # Delete user by Id
-DELETE http://localhost:9090/user-managment/users/2
+DELETE http://localhost:9090/user-management/users/2
 
 HTTP/1.1 405  - Method Not Allowed
 content-type: application/json

@@ -3,7 +3,7 @@ import backend.database;
 import ballerina/log;
 import ballerina/sql;
 
-service /user\-managment on new http:Listener(9090) {
+service /user\-management on new http:Listener(9090) {
 
     # Insert user
     #
