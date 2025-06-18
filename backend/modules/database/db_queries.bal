@@ -41,6 +41,20 @@ isolated function getUserById(int userId) returns sql:ParameterizedQuery {
     return query;
 }
 
+# Build query to search and retrieve a user by name from the database
+# 
+# + nameInput - name of the user
+# + return - sql:ParameterizedQuery - SQL query to select a user by name
+isolated function searchUserByName(string nameInput) returns sql:ParameterizedQuery {
+    sql:ParameterizedQuery query =
+
+    `WHERE first_name LIKE '%${nameInput}%'
+     OR last_name LIKE '%${nameInput}%'
+     OR CONCAT(first_name, ' ', last_name) LIKE '%${nameInput}%'`;
+
+    return query;
+}
+
 # Build query to update a user in the database
 #
 # + user - User record containing updated user details
