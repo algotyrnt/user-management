@@ -25,7 +25,7 @@ type DatabaseClientConfig record {|
 |};
 
 # [Database]User insert type.
-type UserInsert record {|
+public type UserInsert record {|
     # User's first name
     string firstName;
     # User's last name

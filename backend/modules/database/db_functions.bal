@@ -5,21 +5,21 @@ import ballerina/sql;
 # + newUser - UserInsert record containing user details
 # + return - Id of the user|Error
 public isolated function insertUser(UserInsert newUser) returns int|error {
-    sql:ExecutionResult|error executionResult = databaseClient->execute(insertUser(newUser));
+    sql:ExecutionResult|error executionResult = databaseClient->execute(insertUserQuerry(newUser));
 
     if executionResult is error {
         return executionResult;
     }
 
-    return executionResult.lastInsertId;
+    return <int>executionResult.lastInsertId;
 }
 
 # Fetch user by Id
 # 
 # + userId - Id of the user
 # + return - User|Error
-public isolated function getUserById(int userID) returns User|error {
-    User|error user = databaseClient->queryRow(getUserById(userID));
+public isolated function getUserById(int userId) returns User|error {
+    User|error user = databaseClient->queryRow(getUserByIdQuerry(userId));
 
     return user;
 }
@@ -27,8 +27,8 @@ public isolated function getUserById(int userID) returns User|error {
 # Fetch all the users
 # 
 # + return - List of all users|Error
-public isolated function getAllUsers() returns Users[]|error {
-    User[]|error users = databaseClient->queryRow(getAllUsers());
+public isolated function getAllUsers() returns User[]|error {
+    User[]|error users = databaseClient->queryRow(getAllUsersQuerry());
 
     return users;
 } 
@@ -37,8 +37,8 @@ public isolated function getAllUsers() returns Users[]|error {
 # 
 # + nameInput - name of the user
 # + return - List of possible users|Error
-public isolated function searchUserByName(string nameInput) returns Users[]|error {
-    User[]|error users = databaseClient->queryRow(searchUserByName(nameInput));
+public isolated function searchUserByName(string nameInput) returns User[]|error {
+    User[]|error users = databaseClient->queryRow(searchUserByNameQuerry(nameInput));
 
     return users;
 }

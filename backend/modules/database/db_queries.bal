@@ -4,7 +4,7 @@ import ballerina/sql;
 # 
 # + newUser - UserInsert record containing user details
 # + return - sql:ParameterizedQuery - SQL query to insert a user
-isolated function insertUser(UserInsert newUser) returns sql:ParameterizedQuery {
+isolated function insertUserQuerry(UserInsert newUser) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query =
 
     `INSERT INTO users (first_name, last_name, mobile_number, email) 
@@ -21,7 +21,7 @@ isolated function insertUser(UserInsert newUser) returns sql:ParameterizedQuery 
 # Build query to retrieve all users from the database
 #
 # + return - sql:ParameterizedQuery - SQL query to select all users
-isolated function getAllUsers() returns sql:ParameterizedQuery {
+isolated function getAllUsersQuerry() returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query = 
     
     `SELECT * FROM users`;
@@ -33,7 +33,7 @@ isolated function getAllUsers() returns sql:ParameterizedQuery {
 #
 # + userId - Id of the user to retrieve
 # + return - sql:ParameterizedQuery - SQL query to select a user by Id
-isolated function getUserById(int userId) returns sql:ParameterizedQuery {
+isolated function getUserByIdQuerry(int userId) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query = 
     
     `SELECT * FROM users WHERE id = ${userId}`;
@@ -45,7 +45,7 @@ isolated function getUserById(int userId) returns sql:ParameterizedQuery {
 # 
 # + nameInput - name of the user
 # + return - sql:ParameterizedQuery - SQL query to select a user by name
-isolated function searchUserByName(string nameInput) returns sql:ParameterizedQuery {
+isolated function searchUserByNameQuerry(string nameInput) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query =
 
     `WHERE first_name LIKE '%${nameInput}%'
@@ -59,7 +59,7 @@ isolated function searchUserByName(string nameInput) returns sql:ParameterizedQu
 #
 # + user - User record containing updated user details
 # + return - sql:ParameterizedQuery - SQL query to update a user
-isolated function updateUser(User user) returns sql:ParameterizedQuery {
+isolated function updateUserQuerry(User user) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query =
 
     `UPDATE users 
@@ -77,7 +77,7 @@ isolated function updateUser(User user) returns sql:ParameterizedQuery {
 # 
 # + userId - Id of the user to delete
 # + return - sql:ParameterizedQuery - SQL query to delete a user by ID
-isolated function deleteUserById(int userId) returns sql:ParameterizedQuery {
+isolated function deleteUserByIdQuerry(int userId) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query =
     
     `DELETE FROM users WHERE id = ${userId}`;
