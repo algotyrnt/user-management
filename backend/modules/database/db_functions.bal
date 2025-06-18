@@ -19,11 +19,16 @@ public isolated function insertUser(UserInsert newUser) returns int|error {
 # + userId - Id of the user
 # + return - User|Error
 public isolated function getUserById(int userID) returns User|error {
-    User|sql:Error user = databaseClient->queryRow(getUserById(userID));
-
-    if user is sql:Error && user is sql:NoRowsError {
-        return;
-    }
+    User|error user = databaseClient->queryRow(getUserById(userID));
 
     return user;
 }
+
+# Fetch all the users
+# 
+# + return - List of all users|Error
+public isolated function getAllUsers() returns Users[]|error {
+    User[]|error users = databaseClient->queryRow(getAllUsers());
+
+    return users;
+} 
