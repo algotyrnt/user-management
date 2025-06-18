@@ -27,25 +27,25 @@ type DatabaseClientConfig record {|
 # [Database]User insert type.
 type UserInsert record {|
     # User's first name
-    String firstName;
+    string firstName;
     # User's last name
-    String lastName;
+    string lastName;
     # User's mobile_number
-    String mobileNumber;
+    string mobileNumber;
     # User's email
-    String email;
-|}
+    string email;
+|};
 
 # [Database]User type.
 type User record {|
     # Unique ID of the user
     int id;
     # User's first name
-    String firstName;
+    string firstName;
     # User's last name
-    String lastName;
+    string lastName;
     # User's mobile_number
-    String mobileNumber;
+    string mobileNumber;
     # User's email
-    String email;
-|}
+    string email;
+|};
