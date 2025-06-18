@@ -32,3 +32,13 @@ public isolated function getAllUsers() returns Users[]|error {
 
     return users;
 } 
+
+# Search user by name
+# 
+# + nameInput - name of the user
+# + return - List of possible users|Error
+public isolated function searchUserByName(string nameInput) returns Users[]|error {
+    User[]|error users = databaseClient->queryRow(searchUserByName(nameInput));
+
+    return users;
+}
