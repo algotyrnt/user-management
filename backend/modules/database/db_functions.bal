@@ -56,3 +56,17 @@ public isolated function updateUser(User user) returns int|error {
 
     return <int>executionResult.affectedRowCount;
 }
+
+# Delete user by id
+# 
+# + userId - Id of the user to delete
+# + return - Number of affected rows in the database|Error
+public isolated function deleteUserById(int userId) returns int|error {
+    sql:ExecutionResult|error executionResult = databaseClient->execute(deleteUserById(userId));
+
+    if executionResult is error{
+        return executionResult;
+    }
+
+    return <int>executionResult.affectedRowCount;
+}
