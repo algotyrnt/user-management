@@ -1,4 +1,4 @@
-# User insert type.
+# New User type.
 public type NewUser record {|
     # User's first name
     string firstName;
@@ -10,7 +10,7 @@ public type NewUser record {|
     string email;
 |};
 
-# [Database]User type.
+# User type.
 public type User record {|
     # Unique ID of the user
     int id;
