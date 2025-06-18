@@ -28,3 +28,15 @@ isolated function getAllUsers() returns sql:ParameterizedQuery {
 
     return query;
 }
+
+# Build query to retrieve a user by ID from the database
+#
+# + userId - ID of the user to retrieve
+# + return - sql:ParameterizedQuery - SQL query to select a user by ID
+isolated function getUserById(int userId) returns sql:ParameterizedQuery {
+    sql:ParameterizedQuery query = 
+    
+    `SELECT * FROM users WHERE id = ${userId}`;
+
+    return query;
+}
