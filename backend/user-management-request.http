@@ -1,13 +1,13 @@
 # Get user by Id
-GET http://localhost:9090/user-management/users/4
+GET http://localhost:9090/user-management/users/2
 
 HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 15:13:48 +0530
+date: Wed, 18 Jun 2025 17:08:46 +0530
 content-encoding: gzip
-content-length: 114
+content-length: 119
 ###
 # Get all the users
 GET http://localhost:9090/user-management/users
@@ -16,9 +16,9 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 15:31:07 +0530
+date: Wed, 18 Jun 2025 17:11:27 +0530
 content-encoding: gzip
-content-length: 184
+content-length: 151
 ###
 # Search user by name
 GET http://localhost:9090/user-management/users/search?name=sample"
@@ -73,10 +73,7 @@ content-length: 46
 # Delete user by Id
 DELETE http://localhost:9090/user-management/users/2
 
-HTTP/1.1 405  - Method Not Allowed
-content-type: application/json
+HTTP/1.1 204  - No Content
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 14:08:53 +0530
-content-encoding: gzip
-content-length: 161
+date: Wed, 18 Jun 2025 17:03:08 +0530

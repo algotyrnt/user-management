@@ -114,7 +114,7 @@ service /user\-management on new http:Listener(9090) {
 
         //Handle : user details not updating in db
         if rowsAffected is 0 {
-            string customError = "User did not updated";
+            string customError = "User did not get updated";
             log:printError(customError);
             return <http:InternalServerError>{
                 body: {
@@ -126,5 +126,48 @@ service /user\-management on new http:Listener(9090) {
         return <http:Ok>{
             body:  string `user details updated`
         };
+    }
+
+    # Delete user by id
+    # 
+    # + userId - Id of the user
+    # + return - NoContent if deleted successfully|InternalServerError with error message|NotFound error
+    resource function delete users/[int userId]() returns http:NoContent|http:NotFound|http:InternalServerError {
+        int|error rowsAffected = database:deleteUserById(userId);
+
+        //Handle : user not found error
+        if rowsAffected is sql:NoRowsError {
+            string customeError = string `User not found with id: ${userId}`;
+            log:printError(customeError);
+            return <http:NotFound>{
+                body:  {
+                    message:customeError
+                }
+            };
+        }
+
+        //Handle : error while deleting user
+        if rowsAffected is error {
+            string customError = "Error occurred while deleting user";
+            log:printError(customError, rowsAffected);
+            return <http:InternalServerError>{
+                body: {
+                    message: customError
+                }
+            };
+        }
+
+        //Handle : user details not updating in db
+        if rowsAffected is 0 {
+            string customError = "User did not get deleted";
+            log:printError(customError);
+            return <http:InternalServerError>{
+                body: {
+                    message: customError
+                }
+            };
+        }
+
+        return http:NO_CONTENT;
     }
 }
