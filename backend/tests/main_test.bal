@@ -36,8 +36,8 @@ public function testGetUserById() returns error? {
 # + return - return error if so
 @test:Config {}
 public function testUpdateUser() returns error? {
-    json payload = {"id": "1", "firstName": "Update", "lastName": "User", "mobileNumber": "0882222222" , "email": "test-user-update@user-management"};
-    http:Response response = check testClient->put("/users/1", payload);
+    json payload = {"id": 1, "firstName": "Update", "lastName": "User", "mobileNumber": "0882222222" , "email": "test-user-update@user-management"};
+    http:Response response = check testClient->put("/users", payload);
     test:assertEquals(response.statusCode, 200, msg = "User should be updated");
 }
 
@@ -46,6 +46,6 @@ public function testUpdateUser() returns error? {
 # + return - return error if so
 @test:Config {}
 public function testDeleteUser() returns error? {
-    http:Response response = check testClient->delete("/users/1");
+    http:Response response = check testClient->delete("/users/2");
     test:assertEquals(response.statusCode, 204, msg = "User should be deleted");
 }
