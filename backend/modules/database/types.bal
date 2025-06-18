@@ -24,8 +24,8 @@ type DatabaseClientConfig record {|
     mysql:Options? options;
 |};
 
-# [Database]User insert type.
-public type UserInsert record {|
+# [Database]New User type.
+public type NewUser record {|
     # User's first name
     string firstName;
     # User's last name

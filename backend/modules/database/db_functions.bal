@@ -4,7 +4,7 @@ import ballerina/sql;
 # 
 # + newUser - UserInsert record containing user details
 # + return - Id of the user|Error
-public isolated function insertUser(UserInsert newUser) returns int|error {
+public isolated function insertUser(NewUser newUser) returns int|error {
     sql:ExecutionResult|error executionResult = databaseClient->execute(insertUserQuerry(newUser));
 
     if executionResult is error {

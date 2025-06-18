@@ -1,5 +1,5 @@
 # User insert type.
-public type UserInsert record {|
+public type NewUser record {|
     # User's first name
     string firstName;
     # User's last name
