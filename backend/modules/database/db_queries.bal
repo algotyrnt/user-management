@@ -40,3 +40,21 @@ isolated function getUserById(int userId) returns sql:ParameterizedQuery {
 
     return query;
 }
+
+# Build query to update a user in the database
+#
+# + user - User record containing updated user details
+# + return - sql:ParameterizedQuery - SQL query to update a user
+isolated function updateUser(User user) returns sql:ParameterizedQuery {
+    sql:ParameterizedQuery query =
+
+    `UPDATE users 
+     SET
+        first_name = ${user.firstName},
+        last_name = ${user.lastName},
+        mobile_number = ${user.mobileNumber},
+        email = ${user.email}
+     WHERE id = ${user.id}`;
+
+    return query;
+}
