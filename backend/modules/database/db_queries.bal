@@ -29,10 +29,10 @@ isolated function getAllUsers() returns sql:ParameterizedQuery {
     return query;
 }
 
-# Build query to retrieve a user by ID from the database
+# Build query to retrieve a user by Id from the database
 #
-# + userId - ID of the user to retrieve
-# + return - sql:ParameterizedQuery - SQL query to select a user by ID
+# + userId - Id of the user to retrieve
+# + return - sql:ParameterizedQuery - SQL query to select a user by Id
 isolated function getUserById(int userId) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery query = 
     
@@ -69,6 +69,18 @@ isolated function updateUser(User user) returns sql:ParameterizedQuery {
         mobile_number = ${user.mobileNumber},
         email = ${user.email}
      WHERE id = ${user.id}`;
+
+    return query;
+}
+
+# Build query to delete a user by Id in the database
+# 
+# + userId - Id of the user to delete
+# + return - sql:ParameterizedQuery - SQL query to delete a user by ID
+isolated function deleteUserById(int userId) returns sql:ParameterizedQuery {
+    sql:ParameterizedQuery query =
+    
+    `DELETE FROM users WHERE id = ${userId}`;
 
     return query;
 }
