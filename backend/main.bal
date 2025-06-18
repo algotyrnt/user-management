@@ -9,7 +9,7 @@ service /user\-managment on new http:Listener(9090) {
     #
     # + newUser - newUser record containing user details
     # + return - http:Created status with user ID|InternalServerError with error message
-    resource function put users(NewUser newUser) returns http:Created|http:InternalServerError{
+    resource function post users(NewUser newUser) returns http:Created|http:InternalServerError{
 
         int|error userId = database:insertUser(newUser);
 
