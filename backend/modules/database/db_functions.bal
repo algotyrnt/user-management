@@ -62,7 +62,7 @@ public isolated function updateUser(User user) returns int|error {
 # + userId - Id of the user to delete
 # + return - Number of affected rows in the database|Error
 public isolated function deleteUserById(int userId) returns int|error {
-    sql:ExecutionResult|error executionResult = databaseClient->execute(deleteUserById(userId));
+    sql:ExecutionResult|error executionResult = databaseClient->execute(deleteUserByIdQuerry(userId));
 
     if executionResult is error{
         return executionResult;
