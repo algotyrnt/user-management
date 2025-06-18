@@ -51,7 +51,7 @@ content-encoding: gzip
 content-length: 27
 ###
 # Update a user
-POST http://localhost:9090/user-management/users
+PUT http://localhost:9090/user-management/users
 content-type: application/json
 
 {
@@ -62,13 +62,13 @@ content-type: application/json
 	"email": "user-one-edited@tyrnt.co"
 }
 
-HTTP/1.1 405  - Method Not Allowed
-content-type: application/json
+HTTP/1.1 200  - OK
+content-type: text/plain
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 14:08:13 +0530
+date: Wed, 18 Jun 2025 16:50:44 +0530
 content-encoding: gzip
-content-length: 159
+content-length: 46
 ###
 # Delete user by Id
 DELETE http://localhost:9090/user-management/users/2

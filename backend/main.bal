@@ -69,6 +69,7 @@ service /user\-management on new http:Listener(9090) {
     resource function get users() returns User[]|http:InternalServerError {
         User[]|error users = database:getAllUsers();
 
+        //Handle : error while fetching users
         if users is error {
             string customError = "Error occurred while fetching users";
             log:printError(customError, users);
@@ -80,5 +81,50 @@ service /user\-management on new http:Listener(9090) {
         }
 
         return users;
+    }
+
+    # Update user details
+    #
+    # + user - Updated user entity
+    # + return - Ok status if updated successfully|InternalServerError with error message|NotFound error
+    resource function put users(User user) returns http:Ok|http:NotFound|http:InternalServerError{
+        int|error rowsAffected = database:updateUser(user);
+
+        //Handle : user not found error
+        if rowsAffected is sql:NoRowsError {
+            string customeError = string `User not found with id: ${user.id}`;
+            log:printError(customeError);
+            return <http:NotFound>{
+                body:  {
+                    message:customeError
+                }
+            };
+        }
+
+        //Handle : error while updating user
+        if rowsAffected is error {
+            string customError = "Error occurred while updating user";
+            log:printError(customError, rowsAffected);
+            return <http:InternalServerError>{
+                body: {
+                    message: customError
+                }
+            };
+        }
+
+        //Handle : user details not updating in db
+        if rowsAffected is 0 {
+            string customError = "User did not updated";
+            log:printError(customError);
+            return <http:InternalServerError>{
+                body: {
+                    message: customError
+                }
+            };
+        }
+
+        return <http:Ok>{
+            body:  string `user details updated`
+        };
     }
 }
