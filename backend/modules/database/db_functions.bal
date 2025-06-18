@@ -28,7 +28,12 @@ public isolated function getUserById(int userId) returns User|error {
 # 
 # + return - List of all users|Error
 public isolated function getAllUsers() returns User[]|error {
-    User[]|error users = databaseClient->queryRow(getAllUsersQuerry());
+    stream<User, error?> resultStream = databaseClient->query(getAllUsersQuerry());
+
+    User[] users = [];
+    check from User user in resultStream do {
+        users.push(user);
+    };
 
     return users;
 } 

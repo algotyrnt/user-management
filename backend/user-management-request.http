@@ -1,24 +1,24 @@
 # Get user by Id
-GET http://localhost:9090/user-management/users/1
+GET http://localhost:9090/user-management/users/4
 
 HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 14:06:36 +0530
+date: Wed, 18 Jun 2025 15:13:48 +0530
 content-encoding: gzip
-content-length: 119
+content-length: 114
 ###
 # Get all the users
 GET http://localhost:9090/user-management/users
 
-HTTP/1.1 404  - Not Found
+HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 15:11:34 +0530
+date: Wed, 18 Jun 2025 15:31:07 +0530
 content-encoding: gzip
-content-length: 170
+content-length: 184
 ###
 # Search user by name
 GET http://localhost:9090/user-management/users/search?name=sample"
@@ -42,13 +42,13 @@ content-type: application/json
 	"email": "user-one@user-management"
 }
 
-HTTP/1.1 405  - Method Not Allowed
+HTTP/1.1 201  - Created
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 14:09:42 +0530
+date: Wed, 18 Jun 2025 15:13:02 +0530
 content-encoding: gzip
-content-length: 158
+content-length: 27
 ###
 # Update a user
 POST http://localhost:9090/user-management/users

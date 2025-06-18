@@ -63,4 +63,22 @@ service /user\-management on new http:Listener(9090) {
         return user;
     } 
 
+    # Get all users
+    #
+    # + return - Array of User records|InternalServerError
+    resource function get users() returns User[]|http:InternalServerError {
+        User[]|error users = database:getAllUsers();
+
+        if users is error {
+            string customError = "Error occurred while fetching users";
+            log:printError(customError, users);
+            return <http:InternalServerError>{
+                body: {
+                    message: customError
+                }
+            };
+        }
+
+        return users;
+    }
 }
