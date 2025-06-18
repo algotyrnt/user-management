@@ -54,5 +54,5 @@ public isolated function updateUser(User user) returns int|error {
         return executionResult;
     }
 
-    return executionResult.affectedRowCount;
+    return <int>executionResult.affectedRowCount;
 }

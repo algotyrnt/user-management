@@ -37,7 +37,7 @@ public type UserInsert record {|
 |};
 
 # [Database]User type.
-type User record {|
+public type User record {|
     # Unique ID of the user
     int id;
     # User's first name
