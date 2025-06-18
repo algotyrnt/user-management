@@ -46,11 +46,13 @@ isolated function getUserByIdQuerry(int userId) returns sql:ParameterizedQuery {
 # + nameInput - name of the user
 # + return - sql:ParameterizedQuery - SQL query to select a user by name
 isolated function searchUserByNameQuerry(string nameInput) returns sql:ParameterizedQuery {
+    string pattern = "%" + nameInput + "%";
+
     sql:ParameterizedQuery query =
 
-    `WHERE first_name LIKE '%${nameInput}%'
-     OR last_name LIKE '%${nameInput}%'
-     OR CONCAT(first_name, ' ', last_name) LIKE '%${nameInput}%'`;
+    `SELECT * FROM users WHERE first_name LIKE ${pattern}
+     OR last_name LIKE ${pattern}
+     OR CONCAT(first_name, ' ', last_name) LIKE ${pattern}`;
 
     return query;
 }

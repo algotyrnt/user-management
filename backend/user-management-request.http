@@ -1,13 +1,13 @@
 # Get user by Id
-GET http://localhost:9090/user-management/users/2
+GET http://localhost:9090/user-management/users/1
 
 HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:08:46 +0530
+date: Wed, 18 Jun 2025 17:55:28 +0530
 content-encoding: gzip
-content-length: 119
+content-length: 121
 ###
 # Get all the users
 GET http://localhost:9090/user-management/users
@@ -16,20 +16,20 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:11:27 +0530
+date: Wed, 18 Jun 2025 17:55:31 +0530
 content-encoding: gzip
-content-length: 151
+content-length: 143
 ###
 # Search user by name
-GET http://localhost:9090/user-management/users/search?name=sample"
+GET http://localhost:9090/user-management/users/search?name=test
 
-HTTP/1.1 400  - Bad Request
+HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 14:06:46 +0530
+date: Wed, 18 Jun 2025 17:55:14 +0530
 content-encoding: gzip
-content-length: 193
+content-length: 117
 ###
 # Creat a user
 POST http://localhost:9090/user-management/users

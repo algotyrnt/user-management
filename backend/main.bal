@@ -170,4 +170,25 @@ service /user\-management on new http:Listener(9090) {
 
         return http:NO_CONTENT;
     }
+
+    # Search for users by name
+    #
+    # + name - Name user want to search
+    # + return - Array of User records|InternalServerError
+    resource function get users/search(@http:Query string name) returns User[]|http:InternalServerError {
+        User[]|error users = database:searchUserByName(name);
+
+        //Handle : error while searching users
+        if users is error {
+            string customError = "Error occurred while searching users";
+            log:printError(customError, users);
+            return <http:InternalServerError>{
+                body: {
+                    message: customError
+                }
+            };
+        }
+
+        return users;
+    }
 }

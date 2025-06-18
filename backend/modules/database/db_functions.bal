@@ -43,7 +43,12 @@ public isolated function getAllUsers() returns User[]|error {
 # + nameInput - name of the user
 # + return - List of possible users|Error
 public isolated function searchUserByName(string nameInput) returns User[]|error {
-    User[]|error users = databaseClient->queryRow(searchUserByNameQuerry(nameInput));
+    stream<User, error?> resultStream = databaseClient->query(searchUserByNameQuerry(nameInput));
+
+    User[] users = [];
+    check from User user in resultStream do {
+        users.push(user);
+    };
 
     return users;
 }
