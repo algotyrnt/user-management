@@ -2,13 +2,13 @@ export interface User {
     id: number;
     firstName: string;
     lastName: string;
-    phoneNumber: string;
+    mobileNumber: string;
     email: string;
 }
 
 export interface newUser {
     firstName: string;
     lastName: string;
-    phoneNumber: string;
+    mobileNumber: string;
     email: string;
 }

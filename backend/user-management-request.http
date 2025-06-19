@@ -27,7 +27,7 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:57:26 +0530
+date: Thu, 19 Jun 2025 09:10:11 +0530
 content-encoding: gzip
 content-length: 121
 ###
@@ -46,9 +46,9 @@ HTTP/1.1 201  - Created
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 17:57:31 +0530
+date: Thu, 19 Jun 2025 08:27:41 +0530
 content-encoding: gzip
-content-length: 27
+content-length: 114
 ###
 # Update a user
 PUT http://localhost:9090/user-management/users

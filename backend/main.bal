@@ -3,6 +3,14 @@ import backend.database;
 import ballerina/log;
 import ballerina/sql;
 
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://localhost:5173"],
+        allowMethods: ["GET", "POST", "PUT", "DELETE"],
+        allowHeaders: ["Content-Type"]
+    }
+}
+
 service /user\-management on new http:Listener(9090) {
 
     # Insert user
@@ -25,7 +33,9 @@ service /user\-management on new http:Listener(9090) {
         }
 
         return <http:Created>{
-            body:  userId
+            body:  {id: userId,
+                    ...newUser
+            }
         };
         
     }

@@ -20,7 +20,7 @@ export const userApi = {
     searchUserByName: (name: string) => api.get<User[]>(`/users/search?name=${name}`),
 
     // Create a user
-    createUser: (newUser: newUser) => api.post(`/users`, newUser),
+    createUser: (newUser: newUser) => api.post<User>(`/users`, newUser),
 
     // Update a user
     updateUser: (updatesUser: User) => api.put(`/users`, updatesUser),
