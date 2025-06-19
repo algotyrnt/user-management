@@ -1,3 +1,4 @@
+// User interface
 export interface User {
     id: number;
     firstName: string;
@@ -6,6 +7,7 @@ export interface User {
     email: string;
 }
 
+// New user interface
 export interface newUser {
     firstName: string;
     lastName: string;
