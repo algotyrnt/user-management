@@ -21,5 +21,5 @@ Simple user management system that can add, delete, search, update, get users
 
 ## Project 
 
-- [Backend](./backend/README.md)
-- [Frontend](./frontend/README.md)
+- [Backend](./backend)
+- [Frontend](./frontend)

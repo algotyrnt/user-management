@@ -1,7 +1,11 @@
+// REACT imports
 import type React from "react";
 import { useEffect, useState } from "react";
+// TYPE imports
 import type { newUser, User } from "../types/user";
+// SERVICE imports
 import { userApi } from "../service/api";
+// MUI imports
 import {
     Box,
     Button,
@@ -20,6 +24,7 @@ import {
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+// COMPONENT imports
 import AddUser from "../Components/AddUser";
 
 const Users: React.FC = () => {

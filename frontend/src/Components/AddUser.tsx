@@ -1,6 +1,10 @@
+// REACT imports
 import React, {useEffect, useState, type ChangeEvent} from "react";
+// MUI imports
 import {Button, TextField, Typography, Paper,} from "@mui/material";
+// SERVICE imports
 import {userApi} from "../service/api.ts"; 
+// TYPE imports
 import type { newUser, User } from "../types/user.tsx";
 
 interface AddUserProps {
