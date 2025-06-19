@@ -10,7 +10,7 @@ GET http://localhost:9090/user-management/users
 
 #### Creat a user
 POST http://localhost:9090/user-management/users
-content-type: application/json
+
 ```json
 {
     "firstName": "User",
@@ -22,7 +22,7 @@ content-type: application/json
 
 #### Update a user
 PUT http://localhost:9090/user-management/users
-content-type: application/json
+
 ```json
 {
 	"id": 3,
