@@ -134,7 +134,7 @@ service /user\-management on new http:Listener(9090) {
         }
 
         return <http:Ok>{
-            body:  string `user details updated`
+            body:  {...user}
         };
     }
 

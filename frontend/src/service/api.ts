@@ -2,7 +2,7 @@ import axios from "axios";
 import type { newUser, User } from "../types/user";
 
 const api = axios.create({
-    baseURL: "http://localhost:9090/user-management",
+    baseURL: import.meta.env.VITE_API_URL,
     headers: {
         'Content-Type': 'application/json'
     }

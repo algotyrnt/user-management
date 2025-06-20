@@ -9,16 +9,17 @@ import type { newUser, User } from "../types/user.tsx";
 
 interface AddUserProps {
     existingUser?: User| null;
-    onUserAdded: (newUser: newUser) => void;
+    onUserListChanege: (user: User) => void;
 }
 
-const AddUser: React.FC<AddUserProps> = ({ onUserAdded, existingUser }) => {
+const AddUser: React.FC<AddUserProps> = ({ onUserListChanege, existingUser }) => {
     const [formData, setFormData] = useState<newUser>({
         firstName: existingUser?.firstName || "",
         lastName: existingUser?.lastName || "",
         mobileNumber: existingUser?.mobileNumber || "",
         email: existingUser?.email || ""
     });
+
     useEffect(() => {
         if (existingUser) {
             setFormData({
@@ -50,6 +51,7 @@ const AddUser: React.FC<AddUserProps> = ({ onUserAdded, existingUser }) => {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
+        
         e.preventDefault();
 
         let formErrors = {...errors};
@@ -85,7 +87,9 @@ const AddUser: React.FC<AddUserProps> = ({ onUserAdded, existingUser }) => {
                         ...formData
                     };
                     try{
-                        await userApi.updateUser(updatedUser);
+                        const response = await userApi.updateUser(updatedUser);
+                        onUserListChanege(response.data); // send updated user back to parent
+
                         setFormData({
                             firstName: "",
                             lastName: "",
@@ -103,8 +107,9 @@ const AddUser: React.FC<AddUserProps> = ({ onUserAdded, existingUser }) => {
                     }
 
                 }else {
-                    onUserAdded(formData);
-                    console.log(formData);
+                    const response = await userApi.createUser(formData);
+                    onUserListChanege(response.data);  // send new user to parent
+
                     setFormData({
                         firstName: "",
                         lastName: "",
