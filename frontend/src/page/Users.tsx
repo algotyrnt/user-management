@@ -82,7 +82,7 @@ const Users: React.FC = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", padding: "20px" }}>
+    <Box sx={{ width: "95%", padding: "20px" }}>
       <Grid container className="heading" justifyContent="space-between">
         <Grid>
           <Typography variant="h5" fontWeight="bold">
@@ -92,9 +92,8 @@ const Users: React.FC = () => {
         <Grid
           sx={{
             display: "flex",
-            alignItems: "right",
             gap: 2,
-            paddingLeft: "10%",
+            paddingLeft: "60%",
           }}
         >
           <input
@@ -128,8 +127,7 @@ const Users: React.FC = () => {
               backgroundColor: "#2AED8 !important",
               "&:hover": {
                 backgroundColor: "#28C77F!important",
-              },
-              right: "25%",
+              }
             }}
             onClick={() => {
               setAddForm(true);
