@@ -82,7 +82,7 @@ const Users: React.FC = () => {
   };
 
   return (
-    <Box sx={{ width: "95%", padding: "20px" }}>
+    <Box sx={{ width: "96%", padding: "20px" }}>
       <Grid container className="heading" justifyContent="space-between">
         <Grid>
           <Typography variant="h5" fontWeight="bold">
