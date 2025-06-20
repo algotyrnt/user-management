@@ -43,6 +43,7 @@ const Users: React.FC = () => {
     })();
   }, []);
 
+  // To update users list after adding a user/ updating a user
   const handleUserListChange = (user: User) => {
 
     if (editUser) {
@@ -52,7 +53,7 @@ const Users: React.FC = () => {
             )
         );
     } else {
-      setUsers((prev) => [...prev, user]);
+      setUsers((prevUsers) => [...prevUsers, user]);
     }
     setEditUser(null);
     setAddForm(false);
@@ -61,6 +62,7 @@ const Users: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Search user function
   const handleSearch = async () => {
     try {
       const response = await userApi.searchUserByName(searchTerm);
@@ -70,11 +72,13 @@ const Users: React.FC = () => {
     }
   };
 
+  // Update user function
   const updateUserAdded = (user: User) => {
     setEditUser(user);
     setAddForm(true);
   };
 
+  // Delete user function
   const deleteUser = async (id: number) => {
     try {
       await userApi.deleteUser(id);

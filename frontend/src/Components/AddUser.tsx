@@ -50,6 +50,7 @@ const AddUser: React.FC<AddUserProps> = ({ onUserListChanege, existingUser }) =>
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Subimt button functionality
     const handleSubmit = async (e: React.FormEvent) => {
         
         e.preventDefault();
