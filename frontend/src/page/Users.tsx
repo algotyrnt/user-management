@@ -46,8 +46,11 @@ const Users: React.FC = () => {
   const handleUserListChange = (user: User) => {
 
     if (editUser) {
-        const updatedUsers = users.filter((u) => u.id !== editUser.id); // Remove old user
-        setUsers([...updatedUsers, user]);      // Add updated user
+        setUsers((prevUsers) =>
+            prevUsers.map((userFromList) =>
+                userFromList.id === editUser.id ? user : userFromList
+            )
+        );
     } else {
       setUsers((prev) => [...prev, user]);
     }
